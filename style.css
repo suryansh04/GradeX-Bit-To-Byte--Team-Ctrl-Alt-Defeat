@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins";
+  padding: 10px 40px;
+}
+
+/** Navigatation Bar **/
+
+a {
+  text-decoration: none;
+  color: #bababa;
+}
+.navbar-items {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+}
+.navbar-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/** logo styling **/
+.logo {
+  font-size: 48px;
+  color: black;
+}
+
+.grade-logo {
+  color: #4876ff;
+}
+
+/** Navbar Button Stying **/
+.signin-btn {
+  background-color: #eff3ff;
+  padding: 10px;
+  color: #000000;
+  border-radius: 10px;
+}
+
+.try-for-free-btn {
+  background: linear-gradient(to right, #0061ff, #3fabff);
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+}
+
+/** Header Styling **/
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 40vh;
+}
+
+.header-tagline {
+  font-size: 64px;
+  background: -webkit-linear-gradient(#0061ff, #3fabff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-description {
+  font-size: 20px;
+  color: #898e99;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/** Check **/
