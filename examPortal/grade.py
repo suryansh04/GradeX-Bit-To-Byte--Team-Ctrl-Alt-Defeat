@@ -18,17 +18,21 @@ from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from transformers import BertTokenizer, BertModel
 import torch
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 print("Starting the script...")
 
 # Initialize Firebase
-cred = credentials.Certificate("./gradex-final-firebase-adminsdk-gcz1t-67221911b1.json")
+cred = credentials.Certificate("./gradex-final-firebase-adminsdk-gcz1t-090f09aa54.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 print("Firebase initialized...")
 
 # Initialize Anthropic client
-anthropic_client = anthropic.Client(api_key="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")
+anthropic_client = anthropic.Client(api_key=os.getenv("ANTHROPIC_API_KEY"))
 print("Anthropic client initialized...")
 
 # Load spaCy model
@@ -281,6 +285,7 @@ Remember to maintain a supportive and encouraging tone throughout your feedback,
         "plagiarismStatus": f"Plagiarism level: {plagiarism_level}, Similarity: {similarity:.2f}"
     }
     return convert_to_native(result)
+
 async def process_student_answers():
     print("Starting to process student answers...")
     student_answers_ref = db.collection("studentanswers")
