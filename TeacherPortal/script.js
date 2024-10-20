@@ -238,16 +238,12 @@ function getUrlParameter(name) {
     : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-// Function to update the user name in the header
-
 function updateUserName(name) {
   const userNameElement = document.querySelector(".username");
   if (userNameElement) {
     userNameElement.textContent = name || "Teacher";
   }
 }
-
-// Immediately update the user name when the page loads
 
 document.addEventListener("DOMContentLoaded", () => {
   const name = getUrlParameter("name");
@@ -269,7 +265,6 @@ onAuthStateChanged(auth, async (user) => {
 
 // Storing of the data in the firebase
 const storage = getStorage(app);
-// ... (previous imports and Firebase configuration remain the same)
 
 // Function to read PDF and extract answers
 function readPDF(file) {
@@ -309,7 +304,6 @@ function readPDF(file) {
           }
 
           Promise.all(pagePromises).then(() => {
-            // Remove any undefined elements from the answers array
             answers = answers.filter((answer) => answer !== undefined);
             resolve(answers);
           });
@@ -322,7 +316,7 @@ function readPDF(file) {
     reader.readAsArrayBuffer(file);
   });
 }
-// Modified saveExamToFirebase function
+
 async function saveExamToFirebase() {
   const courseCode = document.querySelector("#courseCode").value;
   const examName = document.querySelector("#examName").value;
@@ -377,7 +371,6 @@ async function saveExamToFirebase() {
       createdAt: serverTimestamp(),
     });
 
-    // Store the document ID in a separate variable
     const examId = docRef.id;
 
     // Update the document with its own ID

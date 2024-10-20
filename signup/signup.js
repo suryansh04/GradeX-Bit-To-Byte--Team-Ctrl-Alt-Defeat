@@ -118,7 +118,6 @@ form.addEventListener("submit", async (e) => {
   }
   showSpinner();
   try {
-    // Create user with email and password
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
@@ -126,7 +125,6 @@ form.addEventListener("submit", async (e) => {
     );
     const user = userCredential.user;
 
-    // Add user details to Firestore
     await setDoc(doc(db, "users", user.uid), {
       name: name,
       email: email,

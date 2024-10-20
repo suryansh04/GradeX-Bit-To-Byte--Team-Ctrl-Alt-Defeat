@@ -4,7 +4,7 @@ import asyncio
 from grade import process_student_answers 
 
 app = Flask(__name__)
-CORS(app)  # This allows your frontend to make requests to this API
+CORS(app) 
 
 @app.route('/run-grading', methods=['POST'])
 def run_grading():

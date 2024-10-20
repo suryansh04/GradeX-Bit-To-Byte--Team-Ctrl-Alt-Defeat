@@ -119,7 +119,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Function to get URL parameters
 function getUrlParameter(name) {
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
   var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
@@ -129,7 +128,6 @@ function getUrlParameter(name) {
     : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-// Function to update the user name in the header
 function updateUserName(name) {
   const userNameElement = document.querySelector(".username");
   if (userNameElement) {
@@ -206,17 +204,12 @@ function createExamElement(examData, examId) {
 
 function startExam(examId) {
   console.log(`Starting exam with ID: ${examId}`);
-  // Implement your exam start logic here
-
-  // For example, you might want to navigate to a new page or show the exam questions
 
   const studentName = document.querySelector(".username").textContent;
   window.location.href = `../examPortal/examportal.html?examId=${examId}&name=${encodeURIComponent(
     studentName
   )}`;
 }
-
-// Event listener for when the DOM is loaded
 
 document.addEventListener("DOMContentLoaded", async () => {
   const name = getUrlParameter("name");
@@ -301,7 +294,7 @@ function createQuestionAnswerElement(answerData, index) {
 //Fetching Claude's Response
 
 async function FetchResultData() {
-  clearSplideElements(); // Clear existing elements before fetching new data
+  clearSplideElements();
   showSpinner();
   try {
     const studentAnswersCollection = collection(db, "studentanswers");

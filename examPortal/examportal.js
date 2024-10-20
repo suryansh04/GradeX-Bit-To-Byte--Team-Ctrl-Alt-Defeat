@@ -25,11 +25,11 @@ const db = getFirestore(app);
 
 let currentExam;
 let currentQuestionIndex = 0;
-let studentAnswers = []; // Array to store student answers
-let sampleAnswers = []; // Array to store sample answers
-let examQuestions = []; // Array to store exam questions
-let totalMarks = 0; // Variable to store total marks
-let questionMarks = []; // Array to store individual question marks
+let studentAnswers = [];
+let sampleAnswers = [];
+let examQuestions = [];
+let totalMarks = 0;
+let questionMarks = [];
 let examCode = "";
 let examName = "";
 // Function to get URL parameters
@@ -103,7 +103,6 @@ function displayQuestion(index) {
 
 // Event listener for next button
 document.querySelector(".next-btn button").addEventListener("click", () => {
-  // Save the current answer
   const currentAnswer = document.querySelector("textarea").value;
   studentAnswers[currentQuestionIndex] = currentAnswer;
 
@@ -111,10 +110,7 @@ document.querySelector(".next-btn button").addEventListener("click", () => {
   if (currentQuestionIndex < currentExam.questions.length) {
     displayQuestion(currentQuestionIndex);
   } else {
-    // Exam finished, save answers to Firebase
     saveStudentAnswers();
-
-    // startExam(examId);
   }
 });
 
@@ -141,8 +137,8 @@ async function saveStudentAnswers() {
       studentanswer: studentAnswers,
       questions: examQuestions,
       sampleAnswers: sampleAnswers,
-      totalMarks: totalMarks, // Add total marks
-      questionMarks: questionMarks, // Add question marks array
+      totalMarks: totalMarks,
+      questionMarks: questionMarks,
       submittedAt: new Date(),
       examCode: examCode,
       examName: examName,
@@ -150,8 +146,6 @@ async function saveStudentAnswers() {
 
     console.log("Student answers saved with ID: ", docRef.id);
     alert("Exam completed and answers submitted successfully!");
-    // Redirect to a thank you page or back to the main menu
-    // window.location.href = "thank-you.html";
   } catch (error) {
     console.error("Error saving student answers:", error);
     alert("There was an error submitting your answers. Please try again.");
@@ -160,7 +154,6 @@ async function saveStudentAnswers() {
   }
 }
 
-// Initialize exam when page loads
 document.addEventListener("DOMContentLoaded", () => {
   const examId = getUrlParameter("examId");
   if (examId) {
